@@ -17,5 +17,7 @@ while True:
             itemSearch()
         case 2:
             itemAdd()
+        case 3:
+            itemRemove()
         case 5:
             exit(0)
