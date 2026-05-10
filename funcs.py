@@ -16,9 +16,13 @@ def itemSearch():
 def itemAdd():
     addTarget = input('Please enter the name of the item you wish to add: ')
 
-    with open("items.txt", "a") as file: #points to end of file
-        file.write(f"\n{addTarget.lower().strip()}") #New line otherwise appended to end of previous item
-        print(f"Added {addTarget.strip()} to file\n")
+    try:
+        validateInputString(addTarget)
+        with open("items.txt", "a") as file: #points to end of file
+            file.write(f"\n{addTarget.lower().strip()}") #New line otherwise appended to end of previous item
+            print(f"Added {addTarget.strip()} to file\n")
+    except ValueError as e:
+        print(e)
 
 def itemRemove():
     removeTarget = input('Enter the item to be removed: ')

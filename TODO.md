@@ -7,6 +7,7 @@
 ### In Progress
 - [ ] Menu looping match cases
 - [ ] Update Items
+- [ ] Refactor item removal and prevent non-existent items from printing delete message
 
 ### Completed ✓
 - [x] Search function
