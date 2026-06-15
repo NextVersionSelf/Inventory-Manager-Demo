@@ -1,5 +1,5 @@
-Eggs
-Bacon
-Tomato
-Sausage
-Toast
+Eggs, 1.00
+Bacon, 3.50
+Tomato, 2.50
+Sausage, 3.45
+Toast, 0.75
