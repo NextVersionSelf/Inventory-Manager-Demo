@@ -5,8 +5,9 @@ def itemSearch():
         validateInputString(searchTarget)
         with open("items.txt", "r") as file:
             for item in file:
-                if searchTarget.lower().strip() == item.lower().strip(): #Removes whitespace otherwise won't find
-                    print(f"\n{item.strip()} has been found.")
+                name, price = item.strip().split(", ")
+                if name.lower().strip() == searchTarget.lower().strip(): #Removes whitespace otherwise won't find
+                    print(f"\n{name.strip()} for ${price} has been found.")
                     break
             else:
                 print("Item was not found!\n")
@@ -15,12 +16,13 @@ def itemSearch():
 
 def itemAdd():
     addTarget = input('Please enter the name of the item you wish to add: ')
+    addTargetPrice = float(input('Please enter the price of the item: '))
 
     try:
         validateInputString(addTarget)
         with open("items.txt", "a") as file: #points to end of file
-            file.write(f"\n{addTarget.lower().strip()}") #New line otherwise appended to end of previous item
-            print(f"Added {addTarget.strip()} to file\n")
+            file.write(f"\n{addTarget.lower().strip()}, {addTargetPrice}") #New line otherwise appended to end of previous item
+            print(f"Added {addTarget.strip()} for ${addTargetPrice} to file\n")
     except ValueError as e:
         print(e)
 
@@ -30,10 +32,11 @@ def itemRemove():
 
     with open("items.txt", "r+") as file:
         for item in file:
-            if removeTarget.lower().strip() != item.lower().strip():
-                items.append(item)
+            name, price = item.strip().split(",")
+            if name.lower().strip() != removeTarget.lower().strip():
+                items.append(item.strip())
         file.seek(0) #Pointer to start of items
-        file.writelines(items) #Rewrite over old items
+        file.writelines('\n'.join(items)) #Rewrite over old items
         file.truncate() #Remove everything at/after the current pointer position (last new list)
         print(f"Removed {removeTarget.strip()} successfully.\n")
 
