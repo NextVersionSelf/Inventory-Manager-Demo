@@ -19,5 +19,7 @@ while True:
             itemAdd()
         case 3:
             itemRemove()
+        case 4:
+            itemPriceUpdate()
         case 5:
             exit(0)
