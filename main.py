@@ -20,6 +20,7 @@ while True:
         case 3:
             itemRemove()
         case 4:
-            itemPriceUpdate()
+            #itemPriceUpdate()
+            pass
         case 5:
             exit(0)
